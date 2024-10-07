@@ -1,9 +1,12 @@
 import React from 'react'
+import contactImage from '../../assets/contact.svg'
 
 function Contact() {
     return (
-        <div className="relative flex items-top justify-center min-h-[700px] bg-purple-50 sm:items-center sm:pt-0">
-            <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div className="relative flex items-top justify-center min-h-[700px] bg-white sm:items-center sm:pt-0">
+            <div className="max-w-6xl mx-auto sm:px-6 lg:px-10 lg:py-8 border-spacing-2 flex flex-col items-center">
+                <img src={contactImage} width={"400px"} alt="contact picture" />
+                <p className='text-xs text-gray-500'>Image by vectorjuice on Freepik</p>
                 <div className="mt-8 overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2">
                         <div className="p-6 mr-2 bg-purple-100 sm:rounded-lg">
