@@ -2,7 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
+//for deployment, in case of React Router, use the Hash Router instead of the Browser Router.
+// import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
+import { RouterProvider, createHashRouter, createRoutesFromElements, Route } from 'react-router-dom'
+
 import Layout from './Layout.jsx'
 import Home from './components/home/Home.jsx'
 import About from './components/about/About.jsx'
@@ -33,7 +36,7 @@ import Github, { githubLoader } from './components/github/Github.jsx'
 // ])
 
 //create a rouyer METHOD 2 ✅
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
