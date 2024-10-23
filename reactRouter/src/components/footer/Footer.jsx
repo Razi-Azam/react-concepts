@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import brandLogo from '../../assets/coderrazi_logo.jpg'
 
 function Footer() {
@@ -21,14 +21,28 @@ function Footer() {
                             <h2 className="mb-6 text-sm font-semibold text-gray-400 uppercase">Resources</h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
-                                    <Link to="/" className="hover:underline">
+                                    <Link to="/"
+                                        className="hover:underline duration-200 
+                                            border-b border-gray-100
+                                            lg:border-0 hover:text-purple-400 lg:p-0"
+                                    >
                                         Home
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/about" className="hover:underline">
+                                    <NavLink 
+                                        to="/about"
+                                        className={({isActive}) => 
+                                            `block py-2 pr-4 pl-3
+                                            ${isActive ? "text-purple-400" : "text-gray-600"}
+                                            duration-200 
+                                            border-b border-gray-100
+                                            hover:underline
+                                            lg:border-0 hover:text-purple-400 lg:p-0`
+                                        }
+                                    >
                                         About
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -38,7 +52,9 @@ function Footer() {
                                 <li className="mb-4">
                                     <a
                                         href="https://github.com/Razi-Azam"
-                                        className="hover:underline"
+                                        className="hover:underline duration-200 
+                                            border-b border-gray-100
+                                            lg:border-0 hover:text-purple-400 lg:p-0"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
@@ -46,7 +62,11 @@ function Footer() {
                                     </a>
                                 </li>
                                 <li>
-                                    <Link to="/" className="hover:underline">
+                                    <Link to="/" 
+                                        className="hover:underline duration-200 
+                                            border-b border-gray-100
+                                            lg:border-0 hover:text-purple-400 lg:p-0"
+                                    >
                                         Discord
                                     </Link>
                                 </li>
@@ -56,12 +76,20 @@ function Footer() {
                             <h2 className="mb-6 text-sm font-semibold text-gray-400 uppercase">Legal</h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
-                                    <Link to="#" className="hover:underline">
+                                    <Link to="#" 
+                                        className="hover:underline duration-200 
+                                            border-b border-gray-100
+                                            lg:border-0 hover:text-purple-400 lg:p-0"
+                                    >
                                         Privacy Policy
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="#" className="hover:underline">
+                                    <Link to="#" 
+                                        className="hover:underline duration-200 
+                                            border-b border-gray-100
+                                            lg:border-0 hover:text-purple-400 lg:p-0"
+                                    >
                                         Terms &amp; Conditions
                                     </Link>
                                 </li>
