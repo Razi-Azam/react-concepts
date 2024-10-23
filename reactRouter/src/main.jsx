@@ -13,7 +13,7 @@ import Contact from './components/contact/Contact.jsx'
 import User from './components/user/User.jsx'
 import Github, { githubLoader } from './components/github/Github.jsx'
 
-//create a router METHOD 1
+// create a router METHOD 1
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
