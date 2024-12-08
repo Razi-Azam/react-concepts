@@ -33,6 +33,18 @@ function App() {
           className=' outline-none w-full py-1 px-3'
           placeholder='password' readOnly
         />
+        <button className='outline-none bg-orange-700 text-white px-3 pb-1 shrink-0'>copy</button>
+      </div>
+      <div className='flex text-sm gap-x-2'>
+        <div className='flex items-center gap-x-1'>
+          <input 
+            type="range"
+            min={6}
+            max={20}
+            value={length}
+            className='cursor-pointer'
+          /> 
+        </div>
       </div>
     </div>
     </>
