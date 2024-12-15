@@ -189,6 +189,116 @@ function Github() {
 ```
 </details>
 
-##
+
 
  ## [2] useEffect, useRef and useCallback
+- Added an eye icon to toggle password visibility.
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+<details>
+<summary>Create cached form of password generator function using useCallback hook </summary>
+
+```javaScript
+  const generatePassword = useCallback(() => {
+    let pass = " "
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+    if(allowNumber) str += "0123456789"
+    if(allowCharacter) str += "~`!@#$%^&*-+_{}[]()"
+
+    for(let i = 1; i <= passlength; i++) {
+      let char = Math.floor(Math.random() * str.length + 1 )
+      pass += str.charAt(char)
+    }
+
+    setPassword(pass)
+
+  }, [setPassword, passlength, allowNumber, allowCharacter])
+```
+
+</details>
+
+<details>
+<summary>Copy Button</summary>
+
+```javaScript
+  const copyPasswordBtn = useCallback(() => {
+
+    //auto select the password when the copy button is clicked
+    passwordRef.current?.select()
+
+    //to select values only a specific range.
+    //this will highlight only first 8 password
+    passwordRef.current?.setSelectionRange(0, 8)
+    
+    window.navigator.clipboard.writeText(password)
+  }, [password])
+```
+</details>
+
+
+<details>
+<summary>Toggle Eye Button</summary>
+
+```javaScript
+  const togglePassword = () => {
+      setIsPasswordAppear(!isPasswordAppear)
+  }
+```
+</details>
+
+
+<details>
+<summary>Call generatePassword() inside useEffect hook</summary>
+
+```javaScript
+    useEffect(() => {
+    generatePassword()
+  }, [passlength, allowNumber, allowCharacter, generatePassword])
+```
+</details>
+
+
+### useEffect
+- ```useEffect``` is used to perform side effects in functional components.
+- Side effects can include tasks like fetching data, subscribing to external data sources, directly manipulating the DOM, and cleaning up resources.
+
+**When to Use:**
+- When you need to perform an action after the component has rendered (e.g., fetching data, setting up subscriptions).
+- When you need to clean up resources before the component unmounts or updates (e.g., removing event listeners).
+
+**Alternatives:**
+- useLayoutEffect: If the effect needs to run synchronously after all DOM mutations (e.g., reading from the DOM and synchronously re-rendering), you can use useLayoutEffect instead of useEffect.
+
+
+### useRef
+- ```useRef``` creates a mutable object which persists across renders. It's primarily used for accessing DOM elements or storing a value that doesn’t trigger a re-render when updated.
+
+**When to Use:**
+- When you need to store a reference to a DOM element (e.g., focus an input field).
+- When you need to store a mutable value that doesn’t cause a re-render when updated (e.g., holding a previous value for comparison).
+
+
+**Alternatives:**
+- useState: If you need to track state and trigger a re-render when the value changes, use useState instead of useRef.
+- Refs in Class Components: In class components, you would use React.createRef() for DOM references.
+
+
+### useCallback
+- ```useCallback``` returns a memoized version of a callback function. It’s useful when passing functions as props to child components, preventing unnecessary re-renders due to function reference changes.
+
+**When to Use:**
+- When you want to avoid re-creating the same function on every render (especially in performance-sensitive applications).
+- Useful when the function is passed as a prop to child components to prevent unnecessary re-renders.
+
+
+### Comparison Table
+
+| Hook          | Purpose                                                         | When to Use                                                             | Alternatives                                                     |
+|---------------|-----------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------|
+| `useEffect`   | Side effects (e.g., fetching data, subscribing, cleaning up)   | When you need to perform side effects after render or on updates        | Lifecycle methods in class components, `useLayoutEffect` for synchronous DOM updates |
+| `useRef`      | Access DOM elements and persist values across renders           | When you need a persistent reference to a DOM element or mutable value | `createRef` in class components, `useState` for state tracking  |
+| `useCallback` | Memoize functions to prevent unnecessary re-renders             | When you pass functions as props to children and want to avoid re-renders | `useEffect` in some cases, memoizing in parent component directly |
